@@ -1,0 +1,11 @@
+{
+  "name": "visitor-counter",
+  "version": "1.0.0",
+  "main": "api/index.js",
+  "scripts": {
+    "start": "vercel dev"
+  },
+  "dependencies": {
+    "mongoose": "^7.0.0"
+  }
+}
