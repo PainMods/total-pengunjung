@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <title>Visitor Counter</title>
+  <style>
+    body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; }
+    .counter { font-size: 24px; margin: 10px; }
+  </style>
+</head>
+<body>
+  <h1>Total Pengunjung Website</h1>
+  <div class="counter" id="today">Request Count Today: 0</div>
+  <div class="counter" id="alltime">All Time Request Count: 0</div>
+
+  <script>
+    async function fetchStats() {
+      try {
+        const response = await fetch('/api');
+        const data = await response.json();
+        document.getElementById('today').textContent = 'Request Count Today: ' + data.requestCountToday;
+        document.getElementById('alltime').textContent = 'All Time Request Count: ' + data.allTimeRequestCount;
+      } catch (error) {
+        console.error('Error fetching stats:', error);
+      }
+    }
+
+    fetchStats();
+    setInterval(fetchStats, 5000);
+  </script>
+</body>
+</html>
